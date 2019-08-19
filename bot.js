@@ -371,4 +371,31 @@ client.on('message', message => {
 
 
 
+
+client.on("message", message => {
+    var prefix = "!!";
+ if (message.content === "!!help") {
+     message.channel.send('**تم ارسال رسالة بالخاص** :mailbox_with_mail: ');
+  const embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setDescription(`
+             
+==================== **اوامر الميوزك** =====================
+!!play ➾ لتشغيل اغنية
+!!skip ➾ لتخطي اغنية
+!!pause ➾ لإيقآف الأغنية مؤقتا
+!!resume ➾ لتشغيل الاغننية
+!!vol ➾ لتغير مستوى الصوت 0 - 100
+!!stop ➾ لاخراج البوت من الروم
+!!np ➾ لمعرفة الاغنية مشغلة
+!!queue ➾ قائمة الاغاني
+ البوت من تطوير : @!                           Fahd#9406 
+=========================================================
+`)
+   message.author.sendEmbed(embed)
+   
+}
+});
+
+
 client.login(process.env.BOT_TOKEN);
