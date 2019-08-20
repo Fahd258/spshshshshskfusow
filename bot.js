@@ -370,23 +370,23 @@ client.on('message', message => {
 
 
 client.on("message", message => {
-    var prefix = "!!";
- if (message.content === "!!help") {
+    var prefix = "S!";
+ if (message.content === "S!help") {
      message.channel.send('**تم ارسال رسالة بالخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
       .setDescription(`
              
 ==================== **اوامر الميوزك** =====================
-!!play ➾ لتشغيل اغنية
-!!skip ➾ لتخطي اغنية
-!!pause ➾ لإيقآف الأغنية مؤقتا
-!!resume ➾ لتشغيل الاغننية
-!!vol ➾ لتغير مستوى الصوت 0 - 100
-!!stop ➾ لاخراج البوت من الروم
-!!np ➾ لمعرفة الاغنية مشغلة
-!!queue ➾ قائمة الاغاني
- البوت من تطوير : @!                           Fahd#9406 
+S!play ➾ لتشغيل اغنية
+S!skip ➾ لتخطي اغنية
+S!pause ➾ لإيقآف الأغنية مؤقتا
+S!resume ➾ لتشغيل الاغننية
+S!vol ➾ لتغير مستوى الصوت 0 - 100
+S!stop ➾ لاخراج البوت من الروم
+S!np ➾ لمعرفة الاغنية مشغلة
+S!queue ➾ قائمة الاغاني
+ 
 =========================================================
 `)
    message.author.sendEmbed(embed)
