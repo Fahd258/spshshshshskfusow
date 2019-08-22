@@ -451,4 +451,34 @@ client.on('message', message => {
 
 
 
+
+import humanize
+from psutil import Process
+from datetime import datetime
+
+@bot.event
+async def on_ready():
+     bot.launch = datetime.utcnow()
+     bot.process = Process()
+
+@bot.command(name='stats', description='Bot stats.')
+async def stats(ctx): 
+    me = 435734273299841024
+    embed = discord.Embed(
+        color=discord.Color(0x008CFF),
+        description=f'**{bot.user.name}** Stats'
+    )
+    embed.set_thumbnail(url=bot.user.avatar_url)
+    uptime = humanize.naturaldelta(datetime.utcnow() - bot.launch)
+    memoryusage = humanize.naturalsize(bot.process.memory_full_info().uss)
+    embed.add_field(name='❯ Uptime', value=uptime, inline=True)
+    embed.add_field(name='❯ General Stats', value=f'• Guilds: {len(bot.guilds)}\n• Channels: {len([c for c in bot.get_all_channels() if c.type == discord.ChannelType.text])}', inline=True)
+    embed.add_field(name='❯ Memory Usage', value=memoryusage, inline=True)
+    embed.add_field(name='❯ Library', value=f'[discord.py](https://github.com/Rapptz/RoboDanny)', inline=True)
+    embed.set_footer(text=f'© 2019 {bot.get_user(me)}')
+
+    await ctx.send(embed=embed)
+
+
+
 client.login(process.env.BOT_TOKEN);
