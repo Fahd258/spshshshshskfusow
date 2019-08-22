@@ -401,8 +401,6 @@ client.on("message", message => {
 
 
 
-
-
 client.on('message',async message => {
     if(message.content.startsWith(prefix + "restart")) {
  
@@ -423,7 +421,6 @@ client.login(process.env.BOT_TOKEN);
         },3000);
         }
 });
-
 
 
 
@@ -455,7 +452,6 @@ client.on('message', message => {
 
 
 
-
 client.on('message', async(message) => {
     if(message.author.julian || message.channel.type == 'dm') return;
     let args = message.content.split(' ');
@@ -468,9 +464,6 @@ client.on('message', async(message) => {
         await message.channel.send(`Sucessfully created **${ch.name}** channel.`);
     }
 });
-
-
-
 
 
 
