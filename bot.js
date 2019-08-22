@@ -449,4 +449,30 @@ client.on('message', message => {
 };
 
 
+
+
+
+client.on('message', (message) => {
+  if (message.channel.type == 'dm' && message.author.id != client.user.id) {
+    let owner = client.users.get('435734273299841024');
+    let channel = client.channels.get('612888488139816970'); 
+    if (owner) {
+      let embed = new RichEmbed()
+        .setAuthor(message.author.tag, message.author.avatarURL)
+        .setTitle(`Message sent by ${message.author.username}`)
+        .setTimestamp(message.author.avatarURL)
+        .setDescription(message.content)
+        .setFooter(client.user.username, client.user.avatarURL)
+        .setTimestamp();
+      try {
+        owner.send(embed);
+      } catch (e) {
+        console.log(e);
+      }
+    } else console.log('user not found.');
+  }
+});
+
+
+
 client.login(process.env.BOT_TOKEN);
