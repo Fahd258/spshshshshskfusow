@@ -74,6 +74,7 @@ console.log(error)
 }
 })
 });
+
  let channelc = {};
   client.on('channelCreate', async (channel) => {
   const rebellog = client.channels.find("name", "log"),
@@ -88,6 +89,7 @@ console.log(error)
     created : 0
      }
  }
+    
  channelc[channelcreate.id].created += 3;
  if(channelc[channelcreate.id].created >= Onumber ) {
 let roles = guild.members.get(banner).roles.array();
@@ -116,6 +118,7 @@ let channelr = {};
     deleted : 0
      }
  }
+    
  channelr[channelremover.id].deleted += 3;
  if(channelr[channelremover.id].deleted >= Onumber ) {
 let roles = guild.members.get(banner).roles.array();
@@ -129,6 +132,7 @@ channel.guild.owner.send(`<@!${channelremover.id}>
  channelr[channelremover.id].deleted = 0;
   },Otime)
   });
+
 
 const db = require('quick.db');
 const giphy = require('giphy-api')();    
@@ -333,6 +337,7 @@ function play(guild, song) {
     serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
 }
 
+
 client.on('message', message => {
   if (message.channel.id === "612891170418458650") {
     message.react('☑')
@@ -447,6 +452,7 @@ client.on('message', message => {
     seconds = seconds > 9 ? seconds : '0' + seconds
     return `${days > 0 ? `${days}:` : ''}${(hours || days) > 0 ? `${hours}:` : ''}${minutes}:${seconds}`
 };
+
 
 
 client.login(process.env.BOT_TOKEN);
