@@ -476,7 +476,7 @@ client.on('message', async(message) => {
 lient.on('message',async msg => {
      if(msg.channel.type === "dm") return;
   if(msg.author.bot) return;
-  var prefix = "!";
+  var prefix = "!!";
   if(msg.content.startsWith(prefix + "setstats")) {
   if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('❌ **go play minecraft**');
   if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
