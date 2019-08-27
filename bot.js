@@ -520,7 +520,7 @@ client.on('message', async message => {
   if(cmd === 'mc') {
       if(!args[0]) return message.reply("please put the server ip");
       
-      fetch(`https://api.mcsrvstat.us/2/${args[0]}`)
+      fetch(`https://api.mcsrvstat.us/2/${args[1]}`)
       .then(res => res.json())
       .then(async res => {
 
