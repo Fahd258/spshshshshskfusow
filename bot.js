@@ -504,22 +504,6 @@ client.on('message', async(message) => {
  });
 
 
-lient.on('message', async(message) => {
-    let args = message.content.split(' ');
-    if(args[0] == `${prefix}BAN`){
-        if(!message.guild || message.author.bot) return undefined;
-        if(!message.member.hasPermission('BAN_MEMBERS') || !message.guild.member(client.user).hasPermission('BAN_MEMBERS')) return;
-        let user = message.guild.members.get(args[1]) || message.mentions.members.first();
-        let reason = args.slice(2).join(" ");
-        if(!user) return message.channel.send(`**Usage:** ${prefix}BAN @member [reason]`);
-        if(!reason) reason = 'No reason provided.';
-        if(message.guild.member(user.user).highestRole.position >= message.guild.member(message.member).highestRole.position) return message.channel.send(`You cant kick **${user.user.username}** because his role highest than your role!`);
-        if(message.guild.member(user.user).highestRole.position >= message.guild.member(client.user).highestRole.position) return message.channel.send(`I cant kick **${user.user.username}** because his role highest than my role!`);
-        if(!message.guild.member(user.user).kickable) return message.channel.send(`I cant kick **${user.user.username}**.`);
-        await message.guild.member(user).kick(reason, user);
-        await message.channel.send(`**${user.user.username}** has been Ban from the server! \`\`${reason}\`\``);
-     }
- });
 
 
 client.login(process.env.BOT_TOKEN);
