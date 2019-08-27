@@ -506,4 +506,22 @@ client.on('message', async(message) => {
 
 
 
+
+
+
+lient.on("message",msg =>{
+    let limit = 10;
+    if(msg.channel.type !== "text") return;
+    msg.channel.fetchMessages().then(mm=>{
+        if(mm.size >= limit){
+            msg.channel.bulkDelete(100).then(() => {
+                const embed = new Discord.RichEmbed()
+                    .setColor(0xF16104)
+                    .setDescription(`Cleared Channel messages.`)
+                msg.channel.send({ embed }).then( z => z.delete(1600));
+                }).catch(err=>msg.channel.send(err.message))
+        }
+    })
+    })
+
 client.login(process.env.BOT_TOKEN);
