@@ -506,7 +506,7 @@ client.on('message', async(message) => {
 
 
 
-lient.on("message", message => {
+client.on("message", message => {
 if(message.content.startsWith(prefix + "vmute")) {
 var mnt = message.mentions.members.first();
 if(message.author.bot || message.channel.type == "dm" || !message.member.hasPermission("MUTE_MEMBERS") || !message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return;
