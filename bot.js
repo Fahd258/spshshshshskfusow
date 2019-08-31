@@ -601,7 +601,7 @@ if (message.member.voiceChannel == null) return;
 
 
 
-var prefix = '!!'; // your prefix
+var prefix = '!!' 
 client.on('message', message => {
   if(message.content.split(' ')[0] == `${prefix}ban`){
   if(!message.guild || message.author.bot) return undefined;
