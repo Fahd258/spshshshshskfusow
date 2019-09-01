@@ -528,37 +528,6 @@ message.channel.send(`Successfully Unmuted ${mnt} :+1:`)
 });
 
 
-client.on("message", message => {
-    var prefix = '!!'
-    const command = message.content.split(" ")[0];
-
-    if(command == prefix+"vc"){
-
-        if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
-            return message.reply('ماعندك صلاحية ');
-        }
-
-        var member = message.guild.members.get(message.mentions.users.array()[0].id);
-        if(!message.mentions.users){
-            message.reply("منشن العضو ")
-            return;
-        }
-
-    if(!member.voiceChannel){
-    message.reply("العضو مو بروم صوتي")
-    return;
-    }
-              message.guild.createChannel('voicekick', 'voice').then(c => {
-                member.setVoiceChannel(c).then(() => {
-                    c.delete(305).catch(console.log)
-        
-
-
-    
-      });
-     });
-    }
-});
 
 
 
@@ -575,7 +544,6 @@ message.channel.send(`Your message has been successfully delivered to the bot ow
 }).catch(console.error);
 }
 });
-
 
 
 
