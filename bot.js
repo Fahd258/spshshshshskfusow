@@ -582,7 +582,7 @@ client.on('message',zaid => {
    }
    if(zaid.content === prefix + "openroom") {
    if(!zaid.channel.guild) return zaid.channel.send('**This command is only done on servers**');
-   if(!zaid.member.hasPermission('MANAGE_MESSAGES')) return zaid.channel.send(**:x: - No Permissions ! **');
+   if(!zaid.member.hasPermission('MANAGE_MESSAGES')) return zaid.channel.send(:x: - No Permissions ! ');
     zaid.channel.overwritePermissions(zaid.guild.id, {
     SEND_MESSAGES: true
     }).then(() => {
