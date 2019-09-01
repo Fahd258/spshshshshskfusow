@@ -537,7 +537,7 @@ if(message.content.startsWith(prefix + `contact`)){
 if(message.author.bot || message.channel.type == 'dm') return;
 let args = message.content.split(" ").slice(1);
 let msg = args.join(' ');
-let dev = client.users.get("435734273299841024"); //Your id
+let dev = client.users.get("439588548115693568"); //Your id
 if(!args) return message.reply("يجب كتابة الرسالة");
 dev.send(`• | User: **${message.author.tag}**\n\n• | Message: **${msg}**`).then(() =>{
 message.channel.send(`Your message has been successfully delivered to the bot owner`)
