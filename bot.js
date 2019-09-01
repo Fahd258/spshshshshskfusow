@@ -570,4 +570,28 @@ if (message.member.voiceChannel == null) return;
 
 
 
+client.on('messageCreate', async(message) => {
+  let prefix = '#';
+  let args = message.cleanContent.split(' ');
+  if (args[0] == `${prefix}kick`) {
+    if (!message.member.hasPermission('kickMembers')) return;
+    let member = message.channel.guild.members.get(message.mentions[0] ? message.mentions[0].id : args[1]);
+    if (!member) return message.channel.createMessage(`:rolling_eyes: - **I can't find this member**`);
+   if (member.id == message.channel.guild.ownerID || member.id == message.member.id) return message.channel.createMessage(`:rolling_eyes: -  **You can't kick @${member.username}.**`);
+    if (message.member.id != message.channel.guild.ownerID && member.highestRole.position >= message.member.highestRole.position) {
+      message.channel.createMessage(`:rolling_eyes: -  **You can't kick @${member.username}.**`);
+     return;
+   }
+   if (!member.kickable || member.id == client.user.id) return message.channel.createMessage(`:rolling_eyes: - I couldn't kick that user. Please check my permissions and role position.`);
+    try {
+      await member.kick(`By: ${message.member.username}`);
+      await message.channel.createMessage(`**:white_check_mark: @${member.username} kicked from the server!**`);
+    } catch (e) {
+      message.channel.createMessage(`:rolling_eyes: - I couldn't kick that user. Please check my permissions and role position.`);
+   }
+ }
+});
+
+
+
 client.login(process.env.BOT_TOKEN);
