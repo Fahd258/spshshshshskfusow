@@ -571,7 +571,7 @@ if (message.member.voiceChannel == null) return;
 
 
 client.on('messageCreate', async(message) => {
-  let prefix = '#';
+  let prefix = '!!';
   let args = message.cleanContent.split(' ');
   if (args[0] == `${prefix}kick`) {
     if (!message.member.hasPermission('kickMembers')) return;
