@@ -1035,18 +1035,6 @@ My ID : ${client.user.id}\`\`\`**`)
 
 
 
-client.on('message', message => { 
-if(message.content === prefix + "premium") { 
-  var start = moment()[2020, 6, 6];
-var end   = moment([2020, 1, 6]);
-  let embed = new Discord.RichEmbed()
-  .setColor(embedColor)
-  .setDescription(`Today is: \`${moment().format("dddd, MMMM Do YYYY")}\`
-School Date: \`2019/9/1\`
-Time left: \`${moment("20190901", "YYYYMMDD", true).fromNow()}\``)
-  message.channel.send(embed)
-}
-});
 
 
 client.login(process.env.BOT_TOKEN);
