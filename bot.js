@@ -1019,4 +1019,30 @@ if(msg.content.startsWith (prefix  + 'serverinfo')) {
 
 
 
+
+
+client.on('message', (message) => {
+  if (message.channel.type == 'dm' && message.author.id != client.user.id) {
+    let owner = client.users.get('435734273299841024');
+    let channel = client.channels.get('CHANNEL ID'); // ذي لو تبيه ب روم
+    if (owner) {
+      let embed = new RichEmbed()
+        .setAuthor(message.author.tag, message.author.avatarURL)
+        .setTitle(`Message sent by ${message.author.username}`)
+        .setThumbnail(message.author.avatarURL)
+        .setDescription(message.content)
+        .setFooter(client.user.username, client.user.avatarURL)
+        .setTimestamp();
+      try {
+        owner.send(embed);
+      } catch (e) {
+        console.log(e);
+      }
+    } else console.log('user not found.');
+  }
+});
+
+
+
+
 client.login(process.env.BOT_TOKEN);
