@@ -1020,12 +1020,12 @@ client.on('message' , msg => { // itzZa1D - Codes Team.
             if(msg.content.startsWith(`<@${client.user.id}>`))
         var botmention = new Discord.RichEmbed() // itzZa1D - Codes Team.
        .setColor('#36393e') // itzZa1D - Codes Team.
-       .setDescription(`Hey Im **PixelBot !
+       .setDescription(`Hey Im **Fahd Bot !
  \`\`\`Public Prefix : ${prefix}
 My ID : ${client.user.id}\`\`\`**`)
        .addField('• **__Help Command__**' , `\`${prefix}help\`` , true) // itzZa1D - Codes Team.
        .addField('• **__Bot Link__**' , `[Invite Link](https://discordapp.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot)` ,true)
-       .addField('• **__Support Server__**' , `[Support Server](https://discord.gg/vmdQfRZ)` ,true)
+       .addField('• **__Support Server__**' , `[Support Server](https://discord.gg/rrptEaF)` ,true)
        .setFooter('Reqused By : ' + msg.author.username, msg.author.avatarURL) // itzZa1D - Codes Team.
         .setTimestamp() // itzZa1D - Codes Team.
        msg.channel.send(botmention)
