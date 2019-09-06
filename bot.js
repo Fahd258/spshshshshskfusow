@@ -1085,7 +1085,6 @@ client.on('message', message => {
 
 
 
-const Canvas = require("canvas");
 const pretty = require("pretty-ms")
 const credits = JSON.parse(fs.readFileSync('./credits.json'));
 var time = require("./time.json");
