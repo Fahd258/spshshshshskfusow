@@ -1082,4 +1082,179 @@ client.on('message', message => {
     }
 });
 
+
+
+
+const Canvas = require("canvas");
+const pretty = require("pretty-ms")
+const credits = JSON.parse(fs.readFileSync('./credits.json'));
+var time = require("./time.json");
+client.on('message',async message => {
+if(message.author.bot || message.channel.type === 'dm') return;
+let args = message.content.split(' ');
+let author = message.author.id;
+if(!credits[author]) credits[author] = {
+credits: 0,
+visanumber: "",
+visaname: "",
+secretnumber: "",
+visacreates: 1,
+credit: 0
+}
+fs.writeFileSync("./credits.json", JSON.stringify(credits, null, 4));
+if(args[0].toLowerCase() == `${prefix}credits`) {
+const mention = message.mentions.users.first() || message.author;
+const mentionn = message.mentions.users.first();
+if(!args[2]) {
+message.channel.send(`**${mention.username}, your :credit_card: balance is \`$${credits[mention.id].credits}\`**`)
+} else if(mentionn && args[2]) {
+if(isNaN(args[2])) return message.channel.send(`**:x: | Error**`);
+if(args[2] < 1) return message.channel.send(`**:x: | Error**`);
+if(mention.bot) return message.channel.send(`**:x: | Error**`);      
+if(mentionn.id === message.author.id) return message.channel.send(`**:x: | Error**`);
+if(args[2] > credits[author].credits) return message.channel.send(`**:x: | Error , You Don't Have Enough Credit**`);
+if(args[2].includes("-")) return message.channel.send(`**:x: | Error**`);
+let resulting = Math.floor(args[2]-(args[2]*(5/100)));
+let tax = Math.floor(args[2]*(5/100));
+let first = Math.floor(Math.random() * 9);
+let second = Math.floor(Math.random() * 9);
+let third = Math.floor(Math.random() * 9);
+let fourth = Math.floor(Math.random() * 9);
+let num = `${first}${second}${third}${fourth}`;
+let canvas = Canvas.createCanvas(108 , 40)
+let ctx = canvas.getContext('2d');
+const background = await Canvas.loadImage("https://cdn.discordapp.com/attachments/608278049091223552/617791172810899456/hmmm.png");
+ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+ctx.font = '20px Arial Bold';
+ctx.fontSize = '20px';
+ctx.fillStyle = "#ffffff";
+message.channel.send(`**${message.author.username}, Transfer Fees: \`${tax}\`, Amount: \`$${resulting.toLocaleString()}\`**
+type these numbers to confirm: `).then(essss => {
+ctx.fillText(num, canvas.width / 2.4, canvas.height / 1.7);
+message.channel.sendFile(canvas.toBuffer()).then(m => {
+message.channel.awaitMessages(r => r.author.id === message.author.id, { max: 1, time: 20000, errors:['time'] }).then(collected => {
+if(collected.first().content === num) {
+message.channel.send(`**:moneybag: | ${message.author.username}, Done Trans \`$${resulting.toLocaleString()}\` To ${mentionn}**`);
+mention.send(`**:money_with_wings: | Transfer Receipt \`\`\`You Have Received \`$${resulting.toLocaleString()}\` From User ${message.author.username}; (ID (${message.author.id})\`\`\``);
+m.delete();
+credits[author].credits += Math.floor((-resulting.toLocaleString()));
+credits[mentionn.id].credits += Math.floor((+resulting.toLocaleString()));
+fs.writeFileSync("./credits.json", JSON.stringify(credits, null, 4));
+} else {
+m.delete();
+essss.delete();
+}
+})
+})
+})
+}else {
+message.channel.send(`**:x: | Error , Please Command True Ex: \`${prefix}credits [MentionUser] [Balance]\`**`);
+}
+}
+if(args[0].toLowerCase() === `${prefix}daily`) {
+let cooldown = 8.64e+7
+let Daily = time[message.author.id]
+if (Daily !== null && cooldown - (Date.now() - Daily) > 0) {
+let times = (cooldown - (Date.now() - Daily));
+message.channel.send(`**:stopwatch: |  ${message.author.username}, your daily :dollar: credits refreshes in ${pretty(times, {verbose:true})}.**`);
+fs.writeFile("./time.json", JSON.stringify(time), function(e) {
+if(e)throw e;
+})
+}else{
+let ammount = (300, 500, 100, 200, 120, 150, 350, 320, 220, 250);
+credits[author].credits += ammount;
+time[message.author.id] = Date.now();
+message.channel.send(`**:atm:  | ${message.author.username}, you received your :yen: ${ammount} daily credits!**`);
+fs.writeFile("./credits.json", JSON.stringify(credits), function(e) {
+if(e)throw e;
+})
+}
+}
+if(message.content.startsWith(prefix + "createvisa")) {
+if(!message.guild.member(message.author).roles.find("name", "CreateVisa")) return message.channel.send("**This Command For Member Have Role \`CreateVisa\`**") // Role
+if(credits[message.author.id].visacreates === 0) return message.channel.send("**:x: | Error , You Can't make Visa You Already Have \`1\`**")
+let name = message.content.split(" ").slice(2).join(" ")
+let owner = message.mentions.users.first()
+if(!name || !owner) return message.channel.send(`**:x: | Error , Please Type Command True Ex: \`${prefix}createvisa [MentionUser] [Name]\`**`)
+let s1 = Math.floor(Math.random() * 9);
+let s2 = Math.floor(Math.random() * 9);
+let s3 = Math.floor(Math.random() * 9);
+let s4 = Math.floor(Math.random() * 9);
+let s5 = Math.floor(Math.random() * 9);
+let s6 = Math.floor(Math.random() * 9);
+let s7 = Math.floor(Math.random() * 9);
+let s8 = Math.floor(Math.random() * 9);
+let s9 = Math.floor(Math.random() * 9);
+let s10 = Math.floor(Math.random() * 9);
+let s11 = Math.floor(Math.random() * 9);
+let s12 = Math.floor(Math.random() * 9);
+let s13 = Math.floor(Math.random() * 9);
+let s14 = Math.floor(Math.random() * 9);
+let s15 = Math.floor(Math.random() * 9);
+let s16 = Math.floor(Math.random() * 9);
+let visanumber = `${s1}${s2}${s3}${s4}${s5}${s6}${s7}${s8}${s9}${s10}${s11}${s12}${s13}${s14}${s15}${s16}`;
+let secretnumber = `${s1}${s2}${s3}`;
+ 
+message.channel.send(`**:white_check_mark: | Done**`)
+credits[message.author.id].visaname = name
+credits[message.author.id].visanumber = visanumber
+credits[message.author.id].secretnumber = secretnumber
+credits[message.author.id].visacreates -= 1
+fs.writeFileSync("./credit.json", JSON.stringify(credits), function(b) {
+if (b) throw b;
+})
+let emb2 = new Discord.RichEmbed()
+.setTitle("**New Visa**")
+.addField("❯ VisaName",`» \`${credits[message.author.id].visaname}\``)
+.addField("❯ VisaNumber",`» \`${credits[message.author.id].visanumber}\``)
+.addField("❯ SecretNumber",`» \`${credits[message.author.id].secretnumber}\``)
+.addField("❯ By", `${message.author}`)
+.setColor("BLUE")
+.setTimestamp()
+.setFooter(client.user.username,client.user.avatarURL)
+owner.send(emb2)
+}
+if(!credits[message.author.id]) return message.channel.send(`**You Don't Have a Visa to make type \`${prefix}createvisa\`**`)
+if(message.content.startsWith(prefix + "visainfo")) {
+let emb2 = new Discord.RichEmbed()
+.setTitle("Visa")
+.addField("❯ VisaName",`» \`${credits[message.author.id].visaname}\``)
+.addField("❯ VisaNumber",`» \`${credits[message.author.id].visanumber}\``)
+.addField("❯ SecretNumber",`» \`${credits[message.author.id].secretnumber}\``)
+.addField("❯ VisaMoney",`» \`${credits[message.author.id].credit}\``)
+.setColor("BLUE")
+.setTimestamp()
+.setFooter(client.user.username,client.user.avatarURL)
+message.author.send(emb2)
+}
+if(!credits[message.author.id]) return message.channel.send(`**You Don't Have a Visa to make type \`${prefix}createvisa\`**`)
+if(!credits[message.author.id]) credits[message.author.id] = {credits: 0};
+if(message.content.startsWith(prefix + "addmoney")) {
+let args = message.content.split(" ").slice(1).join(" ")
+if(!args) return message.channel.send("**Type The Money For Add in you're credit**")
+if(args > credits[message.author.id].credits) return message.channel.send("**Your Moeny Is Low**")
+credits[message.author.id].credits -= args
+credits[message.author.id].credit = args
+fs.writeFileSync("./credit.json", JSON.stringify(credits), function(b) {
+if(b) throw b;
+})
+message.channel.send(`**Done Added Money \`${args}\` In The credit**`)
+}
+if(!credits[message.author.id]) return message.channel.send(`**You Don't Have a Visa to make type \`${prefix}createvisa\`**`)
+if(!credits[message.author.id]) credits[message.author.id] = {credits: 0};
+if(message.content.startsWith(prefix + "givemoney")) {
+let mention = message.mentions.users.first();
+let args = message.content.split(" ").slice(2).join(" ")
+if(!args || !mention) return message.channel.send(`**:x: | Error, Please Type Command True Ex: \`${prefix}givemoney [MentionUser] [Amount]\`**`)
+if(args > credits[message.author.id].credit) return message.channel.send("**You Don't Have This money in credit**")
+credits[message.author.id].credits += (+args)
+credits[message.author.id].credit -= args
+fs.writeFileSync("./credit.json", JSON.stringify(credits), function(b) {
+if(b) throw b;
+})
+message.channel.send(`**Done Gived Money \`${args}\` From the credit**`)
+}
+});
+
+
 client.login(process.env.BOT_TOKEN);
