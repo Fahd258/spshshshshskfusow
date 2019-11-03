@@ -1188,7 +1188,7 @@ client.on('message', message => {
 });
 
 
-lient.on("message", (message) => {
+client.on("message", (message) => {
   if (message.channel.type == "dm" && message.author.id != client.user.id) {
     let owner = client.users.get("435734273299841024");
     let channel = client.channels.get("CHANNEL ID"); // ذي لو تبيه ب روم
