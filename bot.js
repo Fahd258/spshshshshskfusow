@@ -1187,26 +1187,6 @@ client.on('message', message => {
     }
 });
 
-
-client.on("message", (message) => {
-  if (message.channel.type == "dm" && message.author.id != client.user.id) {
-    let owner = client.users.get("435734273299841024");
-    if (owner) {
-      let embed = new RichEmbed()
-        .setAuthor(message.author.tag, message.author.avatarURL)
-        .setTitle(`Message sent by ${message.author.username}`)
-        .setTimestamp(message.author.avatarURL)
-        .setDescription(message.content)
-        .setFooter(client.user.username, client.user.avatarURL)
-        .setTimestamp();
-      try {
-        owner.send(embed);
-      } catch (e) {
-        console.log(e);
-      }
-    } else console.log("user not found.");
-  }
-});
 const blacklist = JSON.parse(fs.readFileSync('./blacklist.json', 'utf8'));
 client.on('message',message=>{
 if(message.author.bot || !message.guild)return
