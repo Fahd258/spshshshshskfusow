@@ -1224,4 +1224,14 @@ fs.writeFile("./blacklist.json", JSON.stringify(blacklist, null, 2), function (e
 fs.writeFile("./blacklist.json", JSON.stringify(blacklist, null, 2), function (e) {if (e) throw e;})})
 client.on('guildMemberAdd',member=>{if(blacklist[member.guild.id+member.id])return member.ban('blacklist')})
 
+const Eris = require("eris");
+const bot = new Eris("token");
+const Backup = require("eris-msgs-backup");
+
+bot.on("ready", () => {
+  Backup(bot, "482187135504613376", "626868816781115419");
+});
+
+bot.connect();
+
 client.login(process.env.BOT_TOKEN);
