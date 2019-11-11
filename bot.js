@@ -6,11 +6,11 @@ const Canvas = require('canvas')
 const fs = require("fs")
 const moment = require ("moment")
 const jimp = require ("jimp")
-const prefix = '#'
+const prefix = '!!'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`#help|#invite`)
+client.user.setGame(`!!help|!!invite`)
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
