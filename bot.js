@@ -362,9 +362,7 @@ client.on('message', async msg => {
             serverQueue.connection.dispatcher.resume();
             return msg.channel.send(`:notes: Resumed **${serverQueue.songs[0].title}** `);
            
-        }
-        return msg.channel.send('Queue is empty!');
-    }
+        
  
     return undefined;
 });
